@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 
+import { useState } from 'react';
 import Input from '../Input';
 import Select from '../Select';
 import Button from '../Button';
@@ -8,24 +9,52 @@ import FormGroup from '../FormGroup';
 import { ButtonContainer, Form } from './style';
 
 export default function ContactForm({ buttonLabel }) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [category, setCategory] = useState('');
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log({
+      name, email, phone, category,
+    });
+  }
+
   return (
-    <Form>
+    // eslint-disable-next-line react/jsx-no-bind
+    <Form onSubmit={handleSubmit}>
       <FormGroup>
-        <Input type="text" placeholder="Nome" />
+        <Input
+          placeholder="Nome"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
       </FormGroup>
 
-      <FormGroup
-        error="O e-mail é inválido"
-      >
-        <Input type="text" placeholder="E-mail" error />
+      <FormGroup>
+        <Input
+          placeholder="E-mail"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
       </FormGroup>
       <FormGroup>
-        <Input type="text" placeholder="Telefone" />
+        <Input
+          placeholder="Telefone"
+          value={phone}
+          onChange={(event) => setPhone(event.target.value)}
+        />
       </FormGroup>
       <FormGroup>
-        <Select>
+        <Select
+          value={category}
+          onChange={(event) => setCategory(event.target.value)}
+        >
+          <option value="">Cateroria</option>
           <option value="Instagram">Instagram</option>
           <option value="Facebook">Facebook</option>
+          <option value="Discord">Discord</option>
         </Select>
       </FormGroup>
       <ButtonContainer>

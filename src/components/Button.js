@@ -1,4 +1,4 @@
-import { styled, css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export default styled.button`
   height: 52px;
@@ -21,7 +21,7 @@ export default styled.button`
   }
 
   &[disabled] {
-    background: #ccc; //${({ theme }) => theme.colors.primary.dark};
+    background: #ccc;
     cursor: default
   }
 
