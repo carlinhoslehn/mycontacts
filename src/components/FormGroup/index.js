@@ -13,12 +13,9 @@ export default function FormGroup({ children, error }) {
 
 FormGroup.propTypes = {
   children: PropTypes.node.isRequired,
-  error: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.bool,
-  ]),
+  error: PropTypes.string,
 };
 
 FormGroup.defaultProps = {
-  error: '',
+  error: null,
 };
